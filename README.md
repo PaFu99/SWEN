@@ -2,6 +2,10 @@
 
 Prüfungshilfe für Sofwarentwicklung 1 & 2
 
+## Zusammenfassungen
+[Zusammenfassung von rosinluc](https://github.zhaw.ch/rosinluc/SWEN1/blob/main/SWEN1_Zusammenfassung_rosinluc.md)
+[Zusammenfassung von witscflo](https://github.zhaw.ch/pages/witscflo/swen1_summary/summary.html)
+
 
 ## Mermaid diagram templates for SWEN1
 
