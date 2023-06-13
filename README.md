@@ -1,6 +1,6 @@
 # SWEN
 
-Prüfungshilfe für Sofwarentwicklung 1 & 2
+Prüfungshilfe für Software-Entwicklung 1 & 2
 
 ## Zusammenfassungen
 1. [Zusammenfassung von rosinluc](https://github.zhaw.ch/rosinluc/SWEN1/blob/main/SWEN1_Zusammenfassung_rosinluc.md)
