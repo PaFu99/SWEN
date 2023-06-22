@@ -1,17 +1,22 @@
+---
+title: TITEL
+---
 
 stateDiagram-v2
+
 %% https://mermaid.js.org/syntax/stateDiagram.html#state-diagrams
    
-    [*] --> CheckingSystem
-    CheckingSystem --> NormalOperation : [system OK]
-    NormalOperation --> [*]
-    NormalOperation --> CheckingSystem : [reset]
-   
-    state NormalOperation {
-        [*] --> disarmed
-        
-        disarmed -->  armed: successful activation
-        armed --> disarmed : successful deactivation
+    [*] --> No_Sensor_triggerd
+    No_Sensor_triggerd --> Sensor_triggerd
+    Sensor_triggerd --> höhere_Sensitivität: nach 45 sek
+    höhere_Sensitivität --> No_Sensor_triggerd: nach 5min
+
+    state höhere_Sensitivität{
+
+        [*] --> Sensor_in_5min_triggerd
+
     }
 
-    note right of NormalOperation : This is the note to the right.
+Sensor_in_5min_triggerd --> Alarm
+    
+note right of Alarm : This is the note to the right.

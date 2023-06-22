@@ -1,0 +1,67 @@
+---
+title: TITEL
+---
+
+classDiagram
+
+%% https://mermaid.js.org/syntax/classDiagram.html
+
+%% define classes
+
+  class Device{
+   Ortbeschreibung: String
+   serialNumber: int
+   label: string
+   isOn: boolean
+   enable(): void
+   disable(): void
+   reset(): void
+  }
+  <<Abstract>> Device
+
+  class Sensor{
+   active: boolean
+  }
+
+  class Alarm{
+  active: boolean
+  }
+
+  class Camera{
+  panArgie: float
+  zoomSetting: float
+  }
+
+  class MonitoringState{
+  arm(atHome boolean)
+  disarm()
+  }
+
+  class SafeHomeSystem{
+  userID: String
+  address: String
+  masterPassword: String
+  }
+
+  note for Device "Polymorphism (GRASP)"
+  note for SafeHomeSystem "Controller (GRASP) Singelton (GoF)"
+  note for MonitoringState "State (GoF)"
+
+%% define relations
+Device --> SafeHomeSystem
+MonitoringState --> SafeHomeSystem
+Sensor --|>  Device
+Camera --|> Device 
+Alarm --> Device
+
+
+%% Patterns
+%% (GRASP)
+%% Controller -> Hauptklasse
+%% Polymorphismus
+%% 
+%% (GoF)
+%% State -> Statusänderungen während der Laufzeit
+%% Singelton -> Es kann nur eine Instanz dieser Klasse gemacht werden. 
+%% Singelton wird vielfach mit Controller verwendet
+%% 

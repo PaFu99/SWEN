@@ -1,3 +1,7 @@
+---
+title: TITEL
+---
+
 sequenceDiagram
     participant User
     participant Webapp
@@ -16,5 +20,10 @@ sequenceDiagram
     else Credentials are invalid
         Repository->>+User: Display error message
     end
+
+    loop Every minute
+        Repository-->User: Great!
+    end
+    
     User->>+Webapp: Click on Logout button
     Webapp->>+User: Log out and show login page

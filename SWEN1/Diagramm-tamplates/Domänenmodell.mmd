@@ -1,5 +1,8 @@
+---
+title: Hotelsystem
+---
+
 classDiagram 
- direction RL
 
 %% https://mermaid.js.org/syntax/classDiagram.html
 
@@ -7,24 +10,80 @@ classDiagram
 
   class Hotel{
    Name
+   Angebot_limite
   }
- class Zimmer{
+
+  class Kunde{
+  Buchungsnummer
+  }
+
+  class Checkin_Terminal{
+
+  }
+
+  class Buchung{
+  Checkin_Datum
+  Checkout_Datum
+  Personendaten
+  }
+
+  class Karte{
+   ID_Nummer
+  }
+
+  class Kartenleser{
+  
+  }
+
+  class ZVS{
+
+  }
+
+  class Tür{
+    Öffnet
+    Fehler
+  }
+
+  class Zimmer{
    Nummer
   }
 
-class Mitarbeiter{
+  class Mitarbeiter{
   MitarbeiterNummer
-}
+  }
 
-class Person{
+  class Person{
   Name
   Vorname
   Alter
-}
+  }
+
+  class Hotelsystem{
+  
+  }
+
+  class Zentrale
    
-TEST
+
 %% define relations
 Zimmer "*" -- "1" Hotel
-Mitarbeiter "1..*" -- "1..*" Hotel 
+Mitarbeiter "*" -- "1" Hotel 
 Mitarbeiter --|> Person: inheritance
+Kunde --|> Person: inheritance
 Hotel "1" -- "1" Zentrale: hat
+Kunde "*" -- "*" Checkin_Terminal: checkt ein
+Checkin_Terminal "1" -- "1" Buchung: kann nicht gemacht werden!
+Hotelsystem "1" -- "*" Kunde: identifiziert
+Hotelsystem "1" -- "1" Zimmer: weistzu
+Kunde "1" -- "*" Zimmer: kriegt zugewiesen
+
+Kartenleser "*" -- "1" ZVS: Öffnungsanfrage
+ZVS "1" -- "*" Tür: Öffnungsberechtigung Ja/Nein
+Hotelsystem "1" -- "1" ZVS: welche Karte gehört zu welchem Zimmer
+Hotelsystem "1" -- "*" Karte: Weist Zimmern zu
+Mitarbeiter "*" -- "1" Hotelsystem: Trägt Angebote ein
+Angebot "*" -- "1" Hotelsystem: Wird eingetragen
+Angebot "1" -- "*" Zimmer: Bezieht sich auf
+Hotelsystem "1" -- "1" Zentrale: Benachrichtigt wenn kein Zimmer mehr frei
+Zentrale "1" -- "*" Kunde: Regelt Zimmer zuteilungsproblem
+Kunde "1" -- "1" Buchung: Überprüft Buchungsdaten
