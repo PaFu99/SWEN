@@ -1,0 +1,18 @@
+---
+title: Forum
+---
+
+sequenceDiagram
+    participant Forum
+    participant Topic
+    participant Discussion
+    participant User
+
+    Forum->>+Forum: getUserForName
+    Forum->>+User: Test Password
+    Forum->>+Forum: getTopicForName
+    Forum->>Topic: addUserContribution
+    Topic->>+Topic: getDiscusionForName
+    Topic->>+Discussion: addUserContribution
+    Discussion->>+Discussion: create new Contribution
+    User ->>+ Forum: Input new Content

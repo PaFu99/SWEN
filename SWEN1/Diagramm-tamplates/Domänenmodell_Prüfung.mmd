@@ -1,0 +1,47 @@
+---
+title: Börseninformationssystem
+---
+
+classDiagram 
+
+%% https://mermaid.js.org/syntax/classDiagram.html
+
+%% define classes
+
+  class Broker{
+   Name
+   MitarbieterNummer
+  }
+
+  class Daten{
+  Börse
+  Dateiname
+  Downloadzeit
+  }
+
+  class Seite_im_intranet{
+
+  }
+
+  class Liste{
+  
+  }
+
+  class System{
+   
+  }
+
+  class Archiv{
+  
+  }
+   
+
+%% define relations
+Broker "*" --> "1" Seite_im_intranet: Sieht Daten ein
+Liste "1" --> "*" Daten: beinhaltet
+Seite_im_intranet "1" --> "*" Liste: Zeigt an
+Seite_im_intranet "1" --> "1" System: Läuft auf
+Daten "*" --> "1" Archiv: Liegen auf
+System "1" --> "1" Archiv: Legt Daten ab
+System "1" --> "*" Liste: Filtert
+System "1" --> "*" Daten: Aktualisiert

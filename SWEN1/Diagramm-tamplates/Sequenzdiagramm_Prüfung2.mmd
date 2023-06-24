@@ -1,0 +1,21 @@
+---
+title: Einkaufsmanager
+---
+
+sequenceDiagram
+    participant Einkaufmanager
+    participant Bedarf
+    participant Bedarfsposition
+    participant Bauteilkatalog
+    participant Bauteil
+
+
+    Einkaufmanager->>+Bedarf: addNewBedarf
+    Bedarf->>+Bedarfsposition: setBedarfsposition
+    Bedarfsposition->>+Bauteil: setBauteil
+    Bedarf->>+Bauteilkatalog: checkBauteilnummer
+    
+    
+    
+    
+

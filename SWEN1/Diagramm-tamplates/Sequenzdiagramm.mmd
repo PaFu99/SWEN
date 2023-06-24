@@ -1,29 +1,21 @@
 ---
-title: TITEL
+title: Einkaufsmanager
 ---
 
 sequenceDiagram
-    participant User
-    participant Webapp
-    participant Controller
-    participant Service
-    participant Repository
+    participant Einkaufmanager
+    participant Lieferant
+    participant Bestellung
+    participant Bauteilkatalog
 
-    User->>+Webapp: Open Washly web application
-    User->>+Webapp: Enter email address and password
-    Webapp->>Controller: 
-    Controller->>Controller: 
-    Repository->>+Repository: Check database for user credentials
-    Repository->>+Repository: Validate email address and password
-    alt Credentials are valid
-        Repository->>+User: Grant access to Washly system
-    else Credentials are invalid
-        Repository->>+User: Display error message
-    end
 
-    loop Every minute
-        Repository-->User: Great!
+    Einkaufmanager->>+Lieferant: frag bestellungsnummer an
+    Lieferant->>+Bestellung: holt bestellungsnummer
+    Lieferant->>+Einkaufmanagereferant: liefert Bestellungsnummer
+    
+    loop für jeden artikel
+        Einkaufmanager->>+Bauteilkatalog: preis abfrage
+        Einkaufmanager->>+Einkaufmanager: preis zusammenrechnen
     end
     
-    User->>+Webapp: Click on Logout button
-    Webapp->>+User: Log out and show login page
+
